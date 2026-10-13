@@ -7,9 +7,7 @@ class Workplace(models.Model):
     desk_number = models.CharField(
         max_length=20, unique=True, verbose_name="Номер стола"
     )
-    description = models.TextField(
-        blank=True, verbose_name="Дополнительная информация"
-    )
+    description = models.TextField(blank=True, verbose_name="Дополнительная информация")
     employee = models.OneToOneField(
         "employees.Employee",
         on_delete=models.SET_NULL,

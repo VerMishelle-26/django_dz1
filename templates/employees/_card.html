@@ -1,0 +1,13 @@
+<div class="employee-card">
+    <a href="{% url 'employee_detail' employee.pk %}">
+        <h3>{{ employee.last_name }} {{ employee.first_name }}</h3>
+        <p>
+            <strong>Навыки:</strong>
+            {% for skill in employee.skills.all %}
+                {{ skill.name }} ({{ skill.level }}){% if not forloop.last %}, {% endif %}
+            {% empty %}
+                нет навыков
+            {% endfor %}
+        </p>
+    </a>
+</div>

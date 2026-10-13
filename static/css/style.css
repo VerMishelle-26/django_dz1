@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; background: #f4f4f8; margin: 0; padding: 20px; }
+header { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+nav ul { list-style: none; display: flex; gap: 20px; padding: 0; }
+nav a { color: #4a90d9; text-decoration: none; font-weight: bold; }
+main { max-width: 900px; margin: 0 auto; }
+section { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+.employees-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+.employee-card { padding: 15px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #4a90d9; }
+.employee-card a { text-decoration: none; color: #333; }
+.gallery img { border-radius: 8px; margin: 5px; }
+footer { text-align: center; color: #777; padding: 20px; }

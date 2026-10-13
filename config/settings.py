@@ -128,3 +128,16 @@ MAILERS = {
         "BACKEND": "django.core.mail.backends.console.EmailBackend",
     },
 }
+
+import os
+
+# Шаблоны на уровне проекта
+TEMPLATES[0]["DIRS"] = [os.path.join(BASE_DIR, "templates")]
+
+# Media файлы
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Static файлы
+STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]

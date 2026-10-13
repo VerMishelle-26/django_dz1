@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Список сотрудников{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Все сотрудники</h2>
+    <div class="employees-grid">
+        {% for employee in employees %}
+            {% include "employees/_card.html" %}
+        {% empty %}
+            <p>Сотрудников пока нет.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
