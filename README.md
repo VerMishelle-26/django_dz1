@@ -181,4 +181,5 @@ REST API для управления сотрудниками и рабочим�
 
 ## Автор
 
-Вероника Мишель — https://github.com/VerMishelle-26
+ VerMishelle 
+ — https://github.com/VerMishelle-26
