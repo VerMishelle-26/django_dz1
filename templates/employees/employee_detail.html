@@ -5,7 +5,22 @@
 {% block content %}
 <section>
     <h2>{{ employee.last_name }} {{ employee.first_name }} {{ employee.middle_name }}</h2>
+
+    {% with main=employee.first_image %}
+        {% if main %}
+            <img src="{{ main.image.url }}" alt="Заглавное фото" width="300" class="main-photo">
+        {% endif %}
+    {% endwith %}
+
     <p><strong>Пол:</strong> {{ employee.get_gender_display }}</p>
+    <p><strong>Роль:</strong> {{ employee.get_role_display }}</p>
+    <p><strong>Стаж:</strong> {{ employee.experience_days }} дн.</p>
+
+    {% if employee.workplace %}
+        <p><strong>Номер стола:</strong> {{ employee.workplace.desk_number }}</p>
+    {% else %}
+        <p><strong>Номер стола:</strong> не назначен</p>
+    {% endif %}
 
     <h3>Навыки:</h3>
     <ul>
@@ -20,10 +35,10 @@
 
     <h3>Галерея:</h3>
     <div class="gallery">
-        {% for img in employee.images.all %}
-            <img src="{{ img.image.url }}" alt="Фото {{ forloop.counter }}" width="200">
+        {% for img in employee.other_images %}
+            <img src="{{ img.image.url }}" alt="Фото" width="200">
         {% empty %}
-            <p>Фотографий нет.</p>
+            <p>Дополнительных фото нет.</p>
         {% endfor %}
     </div>
 

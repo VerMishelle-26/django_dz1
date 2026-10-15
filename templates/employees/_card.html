@@ -1,6 +1,13 @@
 <div class="employee-card">
     <a href="{% url 'employee_detail' employee.pk %}">
+        {% with img=employee.first_image %}
+            {% if img %}
+                <img src="{{ img.image.url }}" alt="{{ employee }}" class="card-photo">
+            {% endif %}
+        {% endwith %}
+
         <h3>{{ employee.last_name }} {{ employee.first_name }}</h3>
+
         <p>
             <strong>Навыки:</strong>
             {% for skill in employee.skills.all %}
@@ -9,5 +16,7 @@
                 нет навыков
             {% endfor %}
         </p>
+
+        <p><strong>Стаж:</strong> {{ employee.experience_days }} дн.</p>
     </a>
 </div>

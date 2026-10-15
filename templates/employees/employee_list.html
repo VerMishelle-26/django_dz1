@@ -6,11 +6,23 @@
 <section>
     <h2>Все сотрудники</h2>
     <div class="employees-grid">
-        {% for employee in employees %}
+        {% for employee in page_obj %}
             {% include "employees/_card.html" %}
         {% empty %}
             <p>Сотрудников пока нет.</p>
         {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">← Назад</a>
+        {% endif %}
+
+        <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Вперёд →</a>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
