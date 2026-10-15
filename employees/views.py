@@ -47,3 +47,24 @@ def employee_detail(request, pk):
         "employees/employee_detail.html",
         {"employee": employee},
     )
+
+from rest_framework import viewsets
+from .models import Employee, Skill
+from .serializers import EmployeeSerializer, SkillSerializer
+from .permissions import RoleBasedPermission
+from .filters import EmployeeFilter
+
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.select_related("user", "workplace").prefetch_related(
+        "skills", "images"
+    )
+    serializer_class = EmployeeSerializer
+    permission_classes = [RoleBasedPermission]
+    filterset_class = EmployeeFilter
+
+
+class SkillViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Skill.objects.all()
+    serializer_class = SkillSerializer
+    permission_classes = [RoleBasedPermission]
